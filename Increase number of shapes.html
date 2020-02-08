@@ -1,0 +1,102 @@
+
+<html>
+<head>
+<title>Increasing Number of Shapes</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://static.codehs.com/gulp/52f3938e9af19c3c38e03cee4eee4cb4b94cf808/chs-js-lib/chs.js"></script>
+
+
+<style>
+canvas {
+    border: 1px solid black;
+    display: inline-block;
+    vertical-align: top;
+}
+
+pre {
+    border: 1px solid black;
+    display: inline-block;
+    width: 400px;
+    height: 500px;
+    background-color: #F5F5F5;
+}
+</style>
+
+</head>
+
+<body>
+<h1>Increasing Number of Shapes</h1>
+
+
+
+<canvas
+width="400"
+height="500"
+class="codehs-editor-canvas"></canvas>
+<pre id="console"></pre>
+
+<script>
+window.onload = function() {
+
+    
+var DELAY = 1000;
+var CIRCLE_RADIUS = 25;
+var BUFFER = 50;
+var rect;
+var ball;
+var numShapes = 1;
+var counter=1;
+
+function start() {
+    setTimer(number,DELAY);
+}
+
+function number(){
+if (counter == 1){
+    drawSquare();
+}else if(counter>1){
+for (var i=1;i <=counter;i++) {
+    drawSquare();
+    drawCircle();
+} 
+}
+counter ++;
+}
+
+function drawCircle(){
+    circle();
+}
+function drawSquare(){
+    square();
+}
+
+function square(){
+    rect = new Rectangle (BUFFER,BUFFER);
+    rect.setPosition(Randomizer.nextInt(0,getWidth()-BUFFER),
+                    Randomizer.nextInt(0,getHeight()-BUFFER));
+    rect.setColor(Randomizer.nextColor());
+    add (rect);
+    
+}
+
+function circle(){
+    ball = new Circle(CIRCLE_RADIUS);
+    ball.setPosition(Randomizer.nextInt(0,getWidth()-BUFFER),
+                    Randomizer.nextInt(0,getHeight()-BUFFER));
+    ball.setColor(Randomizer.nextColor());
+    add(ball);
+    
+}
+
+
+    if (typeof start === 'function') {
+        start();
+    }
+};
+</script>
+
+</body>
+</html>
+

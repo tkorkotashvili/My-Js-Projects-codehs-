@@ -1,0 +1,85 @@
+
+<html>
+<head>
+<title>Brick Wall</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://static.codehs.com/gulp/52f3938e9af19c3c38e03cee4eee4cb4b94cf808/chs-js-lib/chs.js"></script>
+
+
+<style>
+canvas {
+    border: 1px solid black;
+    display: inline-block;
+    vertical-align: top;
+}
+
+pre {
+    border: 1px solid black;
+    display: inline-block;
+    width: 400px;
+    height: 500px;
+    background-color: #F5F5F5;
+}
+</style>
+
+</head>
+
+<body>
+<h1>Brick Wall</h1>
+
+
+
+<canvas
+width="400"
+height="500"
+class="codehs-editor-canvas"></canvas>
+<pre id="console"></pre>
+
+<script>
+window.onload = function() {
+
+    // Constants
+var WIDTH = 50;
+var HEIGHT = 20;
+var x=0-2*WIDTH;
+var y=getHeight()-HEIGHT;
+
+function start() {
+    setTimer(setParameters,40);
+}
+function setParameters(){
+    x=x+WIDTH;
+    if(x>=getWidth()){
+       x=0-2*WIDTH;
+       y=y-HEIGHT;
+       if(y==0){
+           stopTimer(setParameters());
+       }
+    }
+    wall(x,y);
+    
+}
+
+
+function wall(x,y){
+    var brick = new Rectangle(WIDTH,HEIGHT);
+        brick.setColor(Color.randomRed());
+        brick.setPosition(x,y);
+        add(brick);
+        
+    
+    
+}
+
+
+    if (typeof start === 'function') {
+        start();
+    }
+};
+</script>
+
+</body>
+</html>
+

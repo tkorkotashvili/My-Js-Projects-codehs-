@@ -1,0 +1,87 @@
+
+<html>
+<head>
+<title>Growing Circle</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://static.codehs.com/gulp/52f3938e9af19c3c38e03cee4eee4cb4b94cf808/chs-js-lib/chs.js"></script>
+
+
+<style>
+canvas {
+    border: 1px solid black;
+    display: inline-block;
+    vertical-align: top;
+}
+
+pre {
+    border: 1px solid black;
+    display: inline-block;
+    width: 400px;
+    height: 500px;
+    background-color: #F5F5F5;
+}
+</style>
+
+</head>
+
+<body>
+<h1>Growing Circle</h1>
+
+
+
+<canvas
+width="400"
+height="500"
+class="codehs-editor-canvas"></canvas>
+<pre id="console"></pre>
+
+<script>
+window.onload = function() {
+
+    /* Constants */
+var START_RADIUS = 1;
+var INCREMENT = 1;
+var CHANGE_COLORS_AT = 10;
+var color=Randomizer.nextColor();
+var MAX_SIZE=getHeight();
+
+function start(){
+        setTimer(setRadius,50);
+    }
+    
+function getRadius(){
+    return START_RADIUS=START_RADIUS+INCREMENT;
+}
+function setRadius(){
+     println(getRadius());
+    if(START_RADIUS %CHANGE_COLORS_AT==0){
+        color=Randomizer.nextColor();
+    }
+    if (START_RADIUS==MAX_SIZE/2){
+       stopTimer(setRadius);
+    }
+   
+    drawCircle(getRadius(),color);
+  
+}
+
+function drawCircle(radius,y){
+      
+    var circle = new Circle(radius);
+    circle.setColor(y);
+    circle.setPosition(getWidth()/2,getHeight()/2);
+    add (circle);
+    }
+
+
+    if (typeof start === 'function') {
+        start();
+    }
+};
+</script>
+
+</body>
+</html>
+

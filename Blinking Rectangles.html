@@ -1,0 +1,98 @@
+
+<html>
+<head>
+<title>Blinking Rectangles</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://static.codehs.com/gulp/52f3938e9af19c3c38e03cee4eee4cb4b94cf808/chs-js-lib/chs.js"></script>
+
+
+<style>
+canvas {
+    border: 1px solid black;
+    display: inline-block;
+    vertical-align: top;
+}
+
+pre {
+    border: 1px solid black;
+    display: inline-block;
+    width: 400px;
+    height: 500px;
+    background-color: #F5F5F5;
+}
+</style>
+
+</head>
+
+<body>
+<h1>Blinking Rectangles</h1>
+
+
+
+<canvas
+width="400"
+height="500"
+class="codehs-editor-canvas"></canvas>
+<pre id="console"></pre>
+
+<script>
+window.onload = function() {
+
+    var NUM_RECTANGLES_ACROSS = 4;
+var NUM_RECTANGLES_DOWN=10;
+var WIDTH=getWidth()/NUM_RECTANGLES_ACROSS;
+var HEIGHT=getHeight()/NUM_RECTANGLES_DOWN;
+var COLOR=Randomizer.nextColor();
+var brick;
+
+
+function  start (){
+    
+drawWall();
+mouseMoveMethod(mouseMove);
+}
+function mouseMove(e){
+    var color;
+    var elem=getElementAt(e.getX(),e.getY());
+    if(elem!=null){
+        elem.setColor(Randomizer.nextColor());
+
+    }
+    
+}
+function drawWall()
+{
+    debugger;
+    //var col=color;
+    var x=0;
+    var y=0;
+    while(y<=getHeight()){
+        for (var i=0;i<=4;i++){
+              wall(x,y);
+                x=x+WIDTH;
+            }
+            x=0;
+        y=y+HEIGHT;
+    }
+} 
+
+function wall (x,y){
+    
+         brick = new Rectangle (WIDTH,HEIGHT);
+        brick.setPosition(x,y);
+        brick.setColor(Color.white);
+        add(brick);
+}
+
+
+    if (typeof start === 'function') {
+        start();
+    }
+};
+</script>
+
+</body>
+</html>
+

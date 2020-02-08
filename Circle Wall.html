@@ -1,0 +1,102 @@
+
+<html>
+<head>
+<title>Circle Wall</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://static.codehs.com/gulp/52f3938e9af19c3c38e03cee4eee4cb4b94cf808/chs-js-lib/chs.js"></script>
+
+
+<style>
+canvas {
+    border: 1px solid black;
+    display: inline-block;
+    vertical-align: top;
+}
+
+pre {
+    border: 1px solid black;
+    display: inline-block;
+    width: 400px;
+    height: 500px;
+    background-color: #F5F5F5;
+}
+</style>
+
+</head>
+
+<body>
+<h1>Circle Wall</h1>
+
+
+
+<canvas
+width="400"
+height="500"
+class="codehs-editor-canvas"></canvas>
+<pre id="console"></pre>
+
+<script>
+window.onload = function() {
+
+    // Constants
+var RADIUS = 20;
+var DELAY = 40;
+var y=RADIUS;
+var x=0-RADIUS;
+var i=0;
+var color;
+
+
+
+// Define your global variables here
+
+function start(){
+    setTimer(setParameters,DELAY);
+    
+}
+
+function setParameters(){
+       
+    
+        x=x+2*RADIUS;
+        if(i%2==0){
+         color=Color.red;
+        }
+         else {
+                color=Color.black;
+        }
+        if(x==getWidth()+RADIUS){
+            i=1;
+            x=0-RADIUS;
+           y=y+2*RADIUS;
+           if (y>=getHeight()){
+               stopTimer(setParameters);
+           }
+        } 
+        i++;
+            ball(x,y,color);
+        
+    }
+
+
+function ball(posX,posY,color){
+    
+    var ball = new Circle(RADIUS);
+        ball.setPosition(posX,posY);
+        ball.setColor(color);
+        add(ball);
+        
+}
+
+
+    if (typeof start === 'function') {
+        start();
+    }
+};
+</script>
+
+</body>
+</html>
+

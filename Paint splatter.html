@@ -1,0 +1,79 @@
+
+<html>
+<head>
+<title>Paint splatter</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://static.codehs.com/gulp/52f3938e9af19c3c38e03cee4eee4cb4b94cf808/chs-js-lib/chs.js"></script>
+
+
+<style>
+canvas {
+    border: 1px solid black;
+    display: inline-block;
+    vertical-align: top;
+}
+
+pre {
+    border: 1px solid black;
+    display: inline-block;
+    width: 400px;
+    height: 500px;
+    background-color: #F5F5F5;
+}
+</style>
+
+</head>
+
+<body>
+<h1>Paint splatter</h1>
+
+
+
+<canvas
+width="400"
+height="500"
+class="codehs-editor-canvas"></canvas>
+<pre id="console"></pre>
+
+<script>
+window.onload = function() {
+
+     // Constants
+ var CIRCLES_PER_SPLATTER = 20;
+ var MIN_RADIUS = 5;
+ var MAX_RADIUS = 25;
+ var DELAY = 500;
+
+/* This program creates a paint splatter.
+ * It's art. */
+function start(){
+    for (var i=0;i<=20;i++){
+     setTimer(draw,DELAY);
+    }
+
+}
+
+
+function draw(){
+    
+    var posX = Randomizer.nextInt(0,getHeight()-MAX_RADIUS);
+    var posY = Randomizer.nextInt(0,getWidth()-MAX_RADIUS);
+    var circle= new Circle(Randomizer.nextInt(MIN_RADIUS,MAX_RADIUS));
+        circle.setColor(Randomizer.nextColor());
+        circle.setPosition(posY,posX);
+        add (circle);
+
+}
+
+
+    if (typeof start === 'function') {
+        start();
+    }
+};
+</script>
+
+</body>
+</html>
+

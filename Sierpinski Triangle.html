@@ -1,0 +1,150 @@
+
+<html>
+<head>
+<title>Sierpinski simulation!</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://static.codehs.com/gulp/52f3938e9af19c3c38e03cee4eee4cb4b94cf808/chs-js-lib/chs.js"></script>
+
+
+<style>
+canvas {
+    border: 1px solid black;
+    display: inline-block;
+    vertical-align: top;
+}
+
+pre {
+    border: 1px solid black;
+    display: inline-block;
+    width: 400px;
+    height: 500px;
+    background-color: #F5F5F5;
+}
+</style>
+
+</head>
+
+<body>
+<h1>Write the Code!</h1>
+
+
+
+<canvas
+width="400"
+height="500"
+class="codehs-editor-canvas"></canvas>
+<pre id="console"></pre>
+
+<script>
+window.onload = function() {
+
+    var tempx;
+var tempy;
+var Ax;
+var Ay;
+var Bx;
+var By;
+var Cx;
+var Cy;
+var Randx;
+var Randy;
+var n;
+var i=0;
+var elem;
+var counter=1;
+
+
+
+function start(){
+    n=readInt("Please Enter number of iterations : ");
+    mouseClickMethod(mouseClick);
+}
+
+
+function mouseClick(e){
+    var x,y;
+    x=e.getX();
+    y=e.getY();
+    fill(x,y,counter);
+    counter++;
+}
+
+function fill(x,y,counter){
+    if (counter==1){
+        Ax=x;
+        Ay=y;
+        drawBall(Ax,Ay);
+    }
+    if(counter==2){
+        Bx=x;
+        By=y;
+        drawBall(Bx,By);
+    }
+    if (counter == 3){
+        
+        Cx=x;
+        Cy=y;
+        drawBall(Cx,Cy);
+    }
+    if (counter==4){
+        Randx=x;
+        Randy=y;
+        drawBall(Randx,Randy);
+    }
+    if (counter==5){
+        setTimer(Sierpinski,20);
+        
+    }
+    
+}
+function Sierpinski(){
+        
+        if(i==n){
+            stopTimer(Sierpinski);
+        }
+    var rand=Randomizer.nextInt(1,3);
+        if (rand==1){
+            tempx=(Ax+Randx)/2;
+            tempy=(Ay+Randy)/2;
+            drawBall(tempx,tempy);
+            Randx=tempx;
+            Randy=tempy;
+        }
+        if (rand==2){
+            tempx=(Bx+Randx)/2;
+            tempy=(By+Randy)/2;
+            drawBall(tempx,tempy);
+            Randx=tempx;
+            Randy=tempy;
+            
+        }
+        if (rand==3){
+            tempx=(Cx+Randx)/2;
+            tempy=(Cy+Randy)/2;
+            drawBall(tempx,tempy);
+            Randx=tempx;
+            Randy=tempy;
+        }
+        i++;
+   // }
+    }
+    
+function drawBall(x,y){
+    var point=new Circle(2);
+        point.setPosition(x,y);
+        point.setColor(Color.red);
+        add(point);
+}
+
+
+    if (typeof start === 'function') {
+        start();
+    }
+};
+</script>
+
+</body>
+</html>
+
